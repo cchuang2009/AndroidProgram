@@ -53,8 +53,11 @@ var defaultLat = 25.035255529260443;
 var defaultLng = 121.389524;
 var loc1 = new google.maps.LatLng(25.035255529260443, 121.389524);
 var loc = [[25.034225,121.390168],[25.032047,121.386692],[25.032514, 121.390661]];
+var loctoLib=[[25.035236, 121.389524],[25.034225,121.390168]];
+var loctoPO=[[25.035236, 121.389524],[25.032514, 121.39066]];
+
 var loctoNSU=[[25.035236,121.389524],[25.034750,121.389245],[25.033991,121.388494],[25.034147,121.388237], [25.033350,121.387013],[25.032125,121.388022],[25.0317170,121.387464],
-             [25.0319892,121.386692]]
+             [25.0319892,121.386692]];
 
 
 function initialize() {
@@ -86,7 +89,7 @@ function initialize() {
     // centers the map on markers coords
     map.setCenter(myMarker.position);
   
-    myPath.setMap(map);
+    //myPath.setMap(map);
 
     // adds the marker on the map
     myMarker.setMap(map);
@@ -126,14 +129,22 @@ document.getElementById('PosMenu').onchange = function() {
     });
   // make the tracjectory
   if (index==0) {
-    // Todo
+     // Todo
+     var coord =[];
+     for (i = 0; i < loctoLib.length; i++) { 
+        coord.push(new google.maps.LatLng(loctoLib[i][0], loctoLib[i][1]));
+        }
   } else if (index==1) {
-    var coord =[];
-    for (i = 0; i < loctoNSU.length; i++) { 
+     var coord =[];
+     for (i = 0; i < loctoNSU.length; i++) { 
         coord.push(new google.maps.LatLng(loctoNSU[i][0], loctoNSU[i][1]));
         }
   } else {
-   //Todo
+    //Todo
+    var coord =[];
+     for (i = 0; i < loctoPO.length; i++) { 
+        coord.push(new google.maps.LatLng(loctoPO[i][0], loctoPO[i][1]));
+        }		    
   }
  
    var TrajPath= new google.maps.Polyline({
